@@ -1,10 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-export default function Home() {
+export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Oops! Home page</Text>
+      <Button
+        title="Go to Profile"
+        onPress={() => navigation.navigate('Chart')}
+      />
     </View>
   );
 }
