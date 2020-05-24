@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useEffect }from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
-export default function Home({ navigation }) {
+import { connect } from 'react-redux';
+import { fetchData } from '../redux/getData';
+import { fetchRecord } from '../redux/getRecord';
 
+const Home = (props)=> {
+    
     let [fontsLoaded] = useFonts({
         'AvenirNextHeavyItalic': require('../../assets/fonts/AvenirNextHeavyItalic.ttf'),
         'AvenirNextULtltalic': require('../../assets/fonts/AvenirNextULtltalic.ttf')
     });
 
+    useEffect(()=>{
+        props.fetchInitialData();
+        props.fetchInitialRecord();
+    },[])
+
     if (!fontsLoaded) {
         return <AppLoading />;
       } else {
         setTimeout(() => {
-            navigation.navigate('Chart')
+            props.navigation.navigate('Chart')
         }, 3000)
         return (
             <View style={styles.container} >
@@ -24,6 +33,17 @@ export default function Home({ navigation }) {
         );
     }
 }
+
+const mapState = null;
+
+const mapDispatch = dispatch => ({
+  fetchInitialData: () => {
+    dispatch(fetchData())
+  },
+  fetchInitialRecord: () => {
+    dispatch(fetchRecord())
+  }
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -46,3 +66,5 @@ const styles = StyleSheet.create({
     color: 'black'
   }
 });
+
+export default  connect(mapState, mapDispatch)(Home);

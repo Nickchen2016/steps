@@ -12,6 +12,7 @@
     "@react-navigation/native": "^5.4.2",
     "@react-navigation/stack": "^5.3.9",
     "@use-expo/font": "^2.0.0",
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "expo": "~37.0.3",
     "expo-sensors": "^8.1.0",
@@ -25,7 +26,12 @@
     "react-native-reanimated": "~1.7.0",
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "~2.2.0",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "babel-preset-expo": "~8.1.0",
