@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
-import { useStepCounter } from './stepCounter';
-import { useFonts } from '@use-expo/font';
+import { useStepCounter } from './counterLogic';
 import { AppLoading } from 'expo';
 import { connect } from 'react-redux';
 
@@ -11,28 +10,24 @@ import CircularChart from './CircularChart';
 
 
 const Chart = (props)=> {
-    const currentStepCount = useStepCounter().currentStepCount;
-    const pastStepCount = useStepCounter().pastStepCount;
-    const isPedometerAvailable = useStepCounter().isPedometerAvailable;
+    const [totalStepCount,settotalStepCount ] = useStepCounter();
+    // console.log('here we got the data in chart page',totalStepCount);
 
-    let [fontsLoaded] = useFonts({
-        'AvenirNextHeavyItalic': require('../../assets/fonts/AvenirNextHeavyItalic.ttf'),
-        'AvenirNextULtltalic': require('../../assets/fonts/AvenirNextULtltalic.ttf')
-    });
-
-    if (!fontsLoaded) {
-        return <AppLoading />;
-    } else {
-        console.log('here is the props in chart: ', props.data,props.record)
-        return (
-            <View style={styles.container}>
-                <StatusBar hidden={ true }/>
-            
-                <Text>Steps</Text>
-
+    // console.log('here is the props in chart: ', props.data,props.record)
+    return (
+        <View style={styles.container}>
+            <StatusBar hidden={ true }/>
+            <View style={styles.columnBar}>
+                <ColumnChart data={props} style={styles.columnBar}/>
             </View>
-        );
-    }
+            <View style={styles.slideBar}>
+                <Slide data={props} style={styles.columnBar}/>
+            </View>
+            <View style={styles.circularBar}>
+                <CircularChart data={props} style={styles.columnBar}/>
+            </View>
+        </View>
+    );
 }
 
 const mapState = state => {
@@ -45,10 +40,23 @@ const mapState = state => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'lightgrey',
+    backgroundColor: 'grey',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  columnBar: {
+    height: '40%',
+    width: '100%'
+  },
+  slideBar: {
+    height: '10%',
+    width: '100%',
+    backgroundColor: 'red'
+  },
+  circularBar: {
+    height: '50%',
+    width: '100%'
+  }
 });
 
 export default connect(mapState)(Chart);

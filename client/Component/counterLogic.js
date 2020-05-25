@@ -29,9 +29,13 @@ export const useStepCounter = ()=>{
         }
     );
 
+    // const end = new Date();
+    // const start = new Date();
+    // start.setDate(end.getDate() - 1);
     const end = new Date();
+    end.setHours(23,59,59,999);
     const start = new Date();
-    start.setDate(end.getDate() - 1);
+    start.setHours(0,0,0,0);
         Pedometer.getStepCountAsync(start, end).then(
             result => {
                 setpastStepCount(result.steps)
@@ -46,7 +50,7 @@ export const useStepCounter = ()=>{
         _subscription && _subscription.remove();
         _subscription = null;
     };
-
-    return {isPedometerAvailable,pastStepCount,currentStepCount};
+    console.log('----------------', pastStepCount, currentStepCount)
+    return [pastStepCount+currentStepCount];
 
 }
