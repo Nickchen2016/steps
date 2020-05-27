@@ -64,7 +64,7 @@ const Chart = (props)=> {
                 <Slide data={props} style={styles.columnBar}/>
             </View>
             <View style={styles.circularBar}>
-                <CircularChart data={props} style={styles.columnBar}/>
+                <CircularChart todaySteps={totalStepCount} style={styles.columnBar}/>
             </View>
         </View>
     );

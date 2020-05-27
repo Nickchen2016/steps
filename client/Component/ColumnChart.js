@@ -13,7 +13,7 @@ const ColumnChart = (props)=>{
                     return (
                         <View key={index} style={{marginLeft:6,marginRight:6}}>
                             <TouchableOpacity activeOpacity={1} style={{height:30,width:30,borderRadius:100,backgroundColor:index==currentDay?'black':'white',display:'flex',alignItems: 'center',justifyContent: 'center'}}>
-                            <Text style={{fontFamily:'AvenirNextULtltalic',color:index!=currentDay?'black':'white',fontSize:18,marginTop:'20%'}}>{day}</Text>
+                            <Text style={{fontFamily:'AvenirNextDemiItalic',color:index!=currentDay?'black':'white',fontSize:18,marginTop:'20%'}}>{day}</Text>
                             </TouchableOpacity>
                         </View>
                     )
