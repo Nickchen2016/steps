@@ -11,7 +11,7 @@ const ColumnChart = (props)=>{
             <View style={styles.dateStyle}>
                 {['S','M','T','W','T','F','S'].map((day,index)=>{
                     return (
-                        <View key={index} style={{marginLeft:6,marginRight:6}}>
+                        <View key={index} style={{marginLeft:8,marginRight:8}}>
                             <TouchableOpacity activeOpacity={1} style={{height:30,width:30,borderRadius:100,backgroundColor:index==currentDay?'black':'white',display:'flex',alignItems: 'center',justifyContent: 'center'}}>
                             <Text style={{fontFamily:'AvenirNextDemiItalic',color:index!=currentDay?'black':'white',fontSize:18,marginTop:'20%'}}>{day}</Text>
                             </TouchableOpacity>

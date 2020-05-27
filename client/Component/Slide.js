@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 import Swiper from 'react-native-animated-swiper';
 import MedalSrc from './MedalSrc';
 
-const Slide = props =>{
-
-        // console.log('&&&&&&&&&',props.currentGoal/10000-2)
+const Slide = (props) =>{
 
         return (
             <Swiper>
@@ -31,12 +29,12 @@ const Slide = props =>{
                             })}
                 </View>
                 {props.record.data&&props.currentGoal>=10000?<View style={styles.slide}>
-                                                                        <Image style={styles.image} source={MedalSrc[props.currentGoal/10000-2]}/>
-                                                                        <Text style={{fontFamily:'AvenirNextULtltalic',color: 'black', fontSize: 18, marginTop:'4%'}}><Text style={{fontFamily:'AvenirNextHeavyCondensed',fontSize: 37}}>{props.record.data}</Text> Steps on {props.record.createdTime}</Text>
-                                                                  </View>:
-                                                                  <View style={styles.slide}>
-                                                                        <Text style={{fontFamily:'AvenirNextULtltalic',color: 'black', fontSize: 18}}>Steps out of your comfort zoom today!</Text>
-                                                                  </View>}
+                                                                <Image style={styles.image} source={MedalSrc[props.currentGoal/10000-2]}/>
+                                                                <Text style={{fontFamily:'AvenirNextULtltalic',color: 'black', fontSize: 18, marginTop:'4%'}}><Text style={{fontFamily:'AvenirNextHeavyCondensed',fontSize: 37}}>{props.record.data}</Text> Steps on {props.record.createdTime}</Text>
+                                                            </View>:
+                                                            <View style={styles.slide}>
+                                                                <Text style={{fontFamily:'AvenirNextULtltalic',color: 'black', fontSize: 18}}>Steps out of your comfort zoom today!</Text>
+                                                            </View>}
 
                 <View style={styles.slide}>
                         <Image style={styles.image} source={require('../../assets/icon6.png')}/>
@@ -54,7 +52,7 @@ const Slide = props =>{
 
 const mapState = state => {
     return {
-      record: state.getRecord
+      record: state.getRecord[0]
     }
   };
 const mapDispatch = null;

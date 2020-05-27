@@ -23,7 +23,7 @@ const Chart = (props)=> {
     useEffect(()=>{
         updateData(currentTime);
         getCurrentGoal();
-        getWeekData(currentTime)
+        getWeekData();
     },[])
     // console.log('here we got the data in chart page',currentWeekBest,currentWeekData,lastWeekData,props.data,props.record);
 
@@ -70,8 +70,7 @@ const Chart = (props)=> {
     }
 
     //Get current and last week's step data
-    getWeekData=(currentTime)=>{
-        const currentWeekDay = currentTime.getDay();
+    getWeekData=()=>{
         props.data&&props.data.length===2?props.data[0].dates.map(d=>lastWeekData[d.date]=d.steps):'';
         props.data&&props.data.length>0?props.data[props.data.length-1].dates.map(d=>currentWeekData[d.date]=d.steps):'';
         const currentweekBestStep = Math.max.apply(null,currentWeekData);
@@ -96,7 +95,7 @@ const Chart = (props)=> {
                 <ColumnChart data={props} style={styles.columnBar}/>
             </View>
             <View style={styles.slideBar}>
-                <Slide todaySteps={totalStepCount} currentGoal={currentGoal} style={styles.columnBar}/>
+                <Slide todaySteps={totalStepCount} currentGoal={currentGoal} currentWeekData={currentWeekData} style={styles.columnBar}/>
             </View>
             <View style={styles.circularBar}>
                 <CircularChart todaySteps={totalStepCount} currentGoal={currentGoal} style={styles.columnBar}/>
