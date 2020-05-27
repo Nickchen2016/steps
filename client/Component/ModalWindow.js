@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { patchRecord } from '../redux/getRecord';
 
 const ModalWindow = props => {
-    const [isModalVisible, setisModalVisible] = useState(true);
+    const [isModalVisible, setisModalVisible] = useState(false);
 
     useEffect(()=>{
         if(props.todaySteps!=0&&props.todaySteps===props.currentGoal){
