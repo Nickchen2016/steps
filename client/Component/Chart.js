@@ -23,8 +23,13 @@ const Chart = (props)=> {
     useEffect(()=>{
         updateData(currentTime);
         getCurrentGoal();
-        getWeekData();
+        getWeekData(currentTime);
     },[])
+
+    useEffect(()=>{
+        getWeekData(currentTime);
+    },[totalStepCount])
+
     // console.log('here we got the data in chart page',currentWeekBest,currentWeekData,lastWeekData,props.data,props.record);
 
     const updateData = (currentTime)=>{
@@ -70,11 +75,15 @@ const Chart = (props)=> {
     }
 
     //Get current and last week's step data
-    getWeekData=()=>{
+    getWeekData=(currentTime)=>{
+        const currentWeekDay = currentTime.getDay();
+        const currentWeekData = [0,0,0,0,0,0,0], lastWeekData = [0,0,0,0,0,0,0];
         props.data&&props.data.length===2?props.data[0].dates.map(d=>lastWeekData[d.date]=d.steps):'';
         props.data&&props.data.length>0?props.data[props.data.length-1].dates.map(d=>currentWeekData[d.date]=d.steps):'';
+        currentWeekData[currentWeekDay]=totalStepCount;
         const currentweekBestStep = Math.max.apply(null,currentWeekData);
         const currentWeekBestDay = {date:currentWeekData.indexOf(currentweekBestStep),step:currentweekBestStep};
+
 
         setcurrentWeekBest(currentWeekBestDay);
         setcurrentWeekData(currentWeekData);
@@ -86,13 +95,13 @@ const Chart = (props)=> {
         <View style={styles.container}>
             <StatusBar hidden={ true }/>
             <View>
-                {/* <ModalWindow 
+                <ModalWindow 
                 currentGoal={currentGoal} 
                 todaySteps={totalStepCount}
-                /> */}
+                />
             </View>
             <View style={styles.columnBar}>
-                <ColumnChart data={props} style={styles.columnBar}/>
+                <ColumnChart lastWeekData={lastWeekData} currentWeekData={currentWeekData} currentWeekBest={currentWeekBest} currentGoal={currentGoal} style={styles.columnBar}/>
             </View>
             <View style={styles.slideBar}>
                 <Slide todaySteps={totalStepCount} currentGoal={currentGoal} currentWeekData={currentWeekData} style={styles.columnBar}/>

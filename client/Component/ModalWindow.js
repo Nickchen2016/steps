@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { patchRecord } from '../redux/getRecord';
 
 const ModalWindow = props => {
-    const [isModalVisible, setisModalVisible] = useState(false);
+    const [isModalVisible, setisModalVisible] = useState(true);
 
     // useEffect(()=>{
     //     if(props.todaySteps===props.currentGoal){
@@ -17,7 +17,7 @@ const ModalWindow = props => {
 
         return(
             <View style={styles.container} >
-                        <Modal 
+                        {/* <Modal 
                             isVisible={isModalVisible} 
                             style={styles.modal}
                             transparent= {true}
@@ -33,7 +33,7 @@ const ModalWindow = props => {
                                 </Text>
                                 <Image style={{width:60,height:60}} source={MedalSrc[props.currentGoal/10000-2]}/>
                             </TouchableOpacity>
-                        </Modal>        
+                        </Modal>         */}
             </View>
         )
 }
