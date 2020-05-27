@@ -1,7 +1,6 @@
 import { Pedometer } from 'expo-sensors';
 import React, { useState, useEffect } from 'react';
 
-
 export const useStepCounter = ()=>{
 
     const [isPedometerAvailable, setisPedometerAvailable] = useState('checking');
@@ -15,6 +14,7 @@ export const useStepCounter = ()=>{
         }
     },[])
 
+    //pedometer function
     _subscribe = () => {
     _subscription = Pedometer.watchStepCount(result => {
         setcurrentStepCount(result.steps)
@@ -29,14 +29,11 @@ export const useStepCounter = ()=>{
         }
     );
 
-    // const end = new Date();
-    // const start = new Date();
-    // start.setDate(end.getDate() - 1);
     const end = new Date();
     end.setHours(23,59,59,999);
     const start = new Date();
     start.setHours(0,0,0,0);
-        Pedometer.getStepCountAsync(start, end).then(
+    Pedometer.getStepCountAsync(start, end).then(
             result => {
                 setpastStepCount(result.steps)
             },
@@ -46,11 +43,12 @@ export const useStepCounter = ()=>{
         );
     };
 
+    //unsubscribe pedometer
     _unsubscribe = () => {
         _subscription && _subscription.remove();
         _subscription = null;
     };
-    console.log('----------------', pastStepCount, currentStepCount)
+    
     return [pastStepCount+currentStepCount];
 
 }

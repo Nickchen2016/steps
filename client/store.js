@@ -1,7 +1,7 @@
 import { combineReducers,createStore,applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
-import loggingMiddleware from 'redux-logger';
+// import loggingMiddleware from 'redux-logger';
 import getData from './redux/getData';
 import getRecord from './redux/getRecord';
 
@@ -10,7 +10,7 @@ const store = createStore(
     reducer,
     composeWithDevTools(applyMiddleware(
         thunkMiddleware,
-        loggingMiddleware
+        // loggingMiddleware
     ))
 );
 

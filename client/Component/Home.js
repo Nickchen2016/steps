@@ -11,7 +11,9 @@ const Home = (props)=> {
     
     let [fontsLoaded] = useFonts({
         'AvenirNextHeavyItalic': require('../../assets/fonts/AvenirNextHeavyItalic.ttf'),
-        'AvenirNextULtltalic': require('../../assets/fonts/AvenirNextULtltalic.ttf')
+        'AvenirNextULtltalic': require('../../assets/fonts/AvenirNextULtltalic.ttf'),
+        'AvenirNextDemiItalic': require('../../assets/fonts/AvenirNextDemiItalic.ttf'),
+        'AvenirNextHeavyCondensed': require('../../assets/fonts/AvenirNextHeavyCondensed.ttf'),
     });
 
     useEffect(()=>{
@@ -35,7 +37,6 @@ const Home = (props)=> {
 }
 
 const mapState = null;
-
 const mapDispatch = dispatch => ({
   fetchInitialData: () => {
     dispatch(fetchData())
@@ -48,7 +49,7 @@ const mapDispatch = dispatch => ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
   },
