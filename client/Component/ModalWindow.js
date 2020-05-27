@@ -8,32 +8,32 @@ import { patchRecord } from '../redux/getRecord';
 const ModalWindow = props => {
     const [isModalVisible, setisModalVisible] = useState(true);
 
-    // useEffect(()=>{
-    //     if(props.todaySteps===props.currentGoal){
-    //         props.patchRecord({ id:props.record._id,data:props.todaySteps });
-    //     }
-    // },[props.todaySteps])
-
+    useEffect(()=>{
+        if(props.todaySteps!=0&&props.todaySteps===props.currentGoal){
+            props.patchRecord({ id:props.record._id,data:props.todaySteps });
+        }
+    },[props.todaySteps])
+    // console.log('modal props!', props);
 
         return(
             <View style={styles.container} >
-                        {/* <Modal 
-                            isVisible={isModalVisible} 
-                            style={styles.modal}
-                            transparent= {true}
-                            backdropOpacity={.4}
-                            animationType={'fade'}
+                    <Modal 
+                        isVisible={isModalVisible} 
+                        style={styles.modal}
+                        transparent= {true}
+                        backdropOpacity={.4}
+                        animationType={'fade'}
+                    >
+                        <TouchableOpacity 
+                            onPress={()=>setisModalVisible(!isModalVisible)} 
+                            style={styles.innerView}
                         >
-                            <TouchableOpacity 
-                                onPress={setisModalVisible(!isModalVisible)} 
-                                style={styles.innerView}
-                            >
-                                <Text style={{fontFamily:'AvenirNextDemiItalic',textAlign:'center',fontSize:26,lineHeight:30, marginTop:'5%'}}>Congratuation for your{"\n"}new record with  
-                                    <Text style={{fontFamily:'AvenirNextHeavyCondensed',fontSize:26}}>{props.todaySteps}</Text>{"\n"}of steps in a day!
-                                </Text>
-                                <Image style={{width:60,height:60}} source={MedalSrc[props.currentGoal/10000-2]}/>
-                            </TouchableOpacity>
-                        </Modal>         */}
+                            <Text style={{fontFamily:'AvenirNextDemiItalic',textAlign:'center',fontSize:26,lineHeight:30, marginTop:'5%'}}>Congratuation for your{"\n"}new record with  
+                                <Text style={{fontFamily:'AvenirNextHeavyCondensed',fontSize:26}}>{props.todaySteps}</Text>{"\n"}of steps in a day!
+                            </Text>
+                            <Image style={{width:60,height:60}} source={MedalSrc[props.currentGoal/10000-2]}/>
+                        </TouchableOpacity>
+                    </Modal>        
             </View>
         )
 }
@@ -47,17 +47,19 @@ const mapDispatch = dispatch =>({
 
 const styles = StyleSheet.create({
     container: {
-        position:'absolute'
+        position:'absolute',
+        width:'100%', height:'100%',
+        flexDirection:'row',alignItems:'center',justifyContent:'center'
     },
     modal: {
-        flex:0,height:200,marginTop:'50%',
+        flex:0,height:200,
         backgroundColor:'white',
-        borderRadius: 20
+        borderRadius: 20, marginTop:'60%'
     },
     innerView: {
-        flexDirection: 'column',marginTop:'50%',
+        flexDirection: 'column',
         height:200,
-        alignItems:'center'
+        alignItems:'center', marginTop:'60%'
     }
 })
 

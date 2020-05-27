@@ -4,7 +4,7 @@ import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 
 const ColumnChart = (props)=>{
     const currentDay = new Date().getDay();
-    console.log('column props!', props);
+
     return (
         <View style={styles.container}>
             <View style={styles.columnStyle}>
