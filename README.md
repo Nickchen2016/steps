@@ -1,7 +1,7 @@
 # <img src='./assets/logo.png' width='240'/>
 
-## Version
-2.0
+## Version  -- 2.0
+<*>. Refactored extensive portions of the codebase from class components into react hooks.
 
 ## Why Create
 Too many pedometer app with ads...
