@@ -4,7 +4,7 @@ import axios from 'axios';
 const initialState = [];
 
 //common url
-const url = 'http://192.168.1.7:5000/data';
+const url = 'http://192.168.1.8:5000/data';
 
 //Action Type
 const GET_DATA = 'GET_DATA';

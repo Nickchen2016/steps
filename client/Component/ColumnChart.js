@@ -3,7 +3,6 @@ import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 
 
 const ColumnChart = (props)=>{
-    const currentDay = new Date().getDay();
 
     return (
         <View style={styles.container}>
@@ -53,9 +52,9 @@ const ColumnChart = (props)=>{
                 {['S','M','T','W','T','F','S'].map((day,index)=>{
                     return (
                         <View key={index} style={{marginLeft:7,marginRight:7,flexDirection:'column',alignItems:'center',justifyContent:'center'}}>
-                            {index===currentDay?<Text style={{fontFamily:'AvenirNextDemiItalic',color:'black',fontSize:18}}>Today</Text>:<Text style={{fontFamily:'AvenirNextDemiItalic',color:'black',fontSize:18,marginLeft:'2%'}}> </Text>}
-                            <TouchableOpacity activeOpacity={1} style={{height:30,width:30,borderRadius:100,backgroundColor:index==currentDay?'black':'white',display:'flex',alignItems: 'center',justifyContent: 'center'}}>
-                            <Text style={{fontFamily:'AvenirNextDemiItalic',color:index!=currentDay?'black':'white',fontSize:18,marginTop:'20%'}}>{day}</Text>
+                            {index===props.currentTime.getDay()?<Text style={{fontFamily:'AvenirNextDemiItalic',color:'black',fontSize:18}}>Today</Text>:<Text style={{fontFamily:'AvenirNextDemiItalic',color:'black',fontSize:18,marginLeft:'2%'}}> </Text>}
+                            <TouchableOpacity activeOpacity={1} style={{height:30,width:30,borderRadius:100,backgroundColor:index==props.currentTime.getDay()?'black':'white',display:'flex',alignItems: 'center',justifyContent: 'center'}}>
+                            <Text style={{fontFamily:'AvenirNextDemiItalic',color:index!=props.currentTime.getDay()?'black':'white',fontSize:18,marginTop:'20%'}}>{day}</Text>
                             </TouchableOpacity>
                         </View>
                     )

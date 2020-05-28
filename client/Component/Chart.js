@@ -24,25 +24,21 @@ const Chart = (props)=> {
         updateData(currentTime);
         getCurrentGoal();
         getWeekData(currentTime);
-    },[])
-
-    useEffect(()=>{
-        getWeekData(currentTime);
     },[totalStepCount])
 
-    // console.log('here we got the data in chart page',currentWeekBest,currentWeekData,lastWeekData,props.data,props.record);
+    // console.log('here we got the data in chart page',currentWeekData,props.data);
 
     const updateData = (currentTime)=>{
+      console.log('updateData has been called', totalStepCount)
         const currentWeekDay = currentTime.getDay();
-        const time = currentTime.setHours(23,59,59,999);
-        const milliseconds = currentTime.getTime()-new Date().getTime();
+        const endingTime = new Date().setHours(23,59,59,999); //23,59,59,999
+        const milliseconds = Math.abs(endingTime-currentTime.getTime());
         const MILLISECONDS_IN_A_DAY = 86400000;
         const idArr = []; //week id arr
         props.data&&props.data.map(week=>idArr.push(week._id));
-        // console.log('~~~~~', currentWeekDay, time,milliseconds, idArr)
     
         let postAtMidNight = setTimeout(function tick(){
-     
+
             if(idArr.length>=2 && currentWeekDay===0){
               props.removeData({id:idArr[0]});
             }
@@ -64,6 +60,7 @@ const Chart = (props)=> {
 
     //Get the next step goal
     const getCurrentGoal = ()=> {
+      console.log('getCurrentGoal has been called', totalStepCount)
         let currentGoal = 0;
         if(props.record.data&&props.record.data.toString().length>4){
             currentGoal+=(Number(props.record.data.toString()[0])+1)*10000;
@@ -76,6 +73,7 @@ const Chart = (props)=> {
 
     //Get current and last week's step data
     getWeekData=(currentTime)=>{
+      console.log('getWeekData has been called', totalStepCount)
         const currentWeekDay = currentTime.getDay();
         const currentWeekData = [0,0,0,0,0,0,0], lastWeekData = [0,0,0,0,0,0,0];
         props.data&&props.data.length===2?props.data[0].dates.map(d=>lastWeekData[d.date]=d.steps):'';
@@ -101,7 +99,7 @@ const Chart = (props)=> {
                 />
             </View>
             <View style={styles.columnBar}>
-                <ColumnChart lastWeekData={lastWeekData} currentWeekData={currentWeekData} currentWeekBest={currentWeekBest} currentGoal={currentGoal} style={styles.columnBar}/>
+                <ColumnChart lastWeekData={lastWeekData} currentWeekData={currentWeekData} currentWeekBest={currentWeekBest} currentGoal={currentGoal} currentTime={currentTime} style={styles.columnBar}/>
             </View>
             <View style={styles.slideBar}>
                 <Slide todaySteps={totalStepCount} currentGoal={currentGoal} currentWeekData={currentWeekData} style={styles.columnBar}/>
