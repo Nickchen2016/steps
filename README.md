@@ -1,12 +1,14 @@
-# steps-2.0
 # <img src='./assets/logo.png' width='240'/>
+
+## Version
+2.0
 
 ## Why Create
 Too many pedometer app with ads...
 Just want to make myself without annoying content.
 
 ## Description
-A react-native step counter protocol
+A mobile app created to help people record their daily steps using MERN stack.
 
 ## Deploy link
 TBC
