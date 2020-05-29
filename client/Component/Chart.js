@@ -26,7 +26,6 @@ const Chart = (props)=> {
         getWeekData(currentTime);
     },[totalStepCount])
 
-
     const updateData = (currentTime)=>{
       // console.log('updateData has been called', totalStepCount)
         const currentWeekDay = currentTime.getDay();
@@ -101,7 +100,7 @@ const Chart = (props)=> {
                 <ColumnChart lastWeekData={lastWeekData} currentWeekData={currentWeekData} currentWeekBest={currentWeekBest} currentGoal={currentGoal} currentTime={currentTime} style={styles.columnBar}/>
             </View>
             <View style={styles.slideBar}>
-                <Slide todaySteps={totalStepCount} currentGoal={currentGoal} currentWeekData={currentWeekData} style={styles.columnBar}/>
+                <Slide todaySteps={totalStepCount} currentGoal={currentGoal} currentWeekData={currentWeekData} record={props.record} style={styles.columnBar}/>
             </View>
             <View style={styles.circularBar}>
                 <CircularChart todaySteps={totalStepCount} currentGoal={currentGoal} style={styles.columnBar}/>

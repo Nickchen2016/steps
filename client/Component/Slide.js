@@ -1,11 +1,9 @@
 import React from 'react';
 import { Text, View, StyleSheet,Image } from 'react-native';
-import { connect } from 'react-redux';
 import Swiper from 'react-native-animated-swiper';
 import MedalSrc from './MedalSrc';
 
 const Slide = (props) =>{
-
         return (
             <Swiper>
                 <View style={styles.slide}>
@@ -50,12 +48,6 @@ const Slide = (props) =>{
         )
     }
 
-const mapState = state => {
-    return {
-      record: state.getRecord[0]
-    }
-  };
-const mapDispatch = null;
 
 const styles = StyleSheet.create({
     slide: { alignItems: 'center', flex: 1, justifyContent: 'center',flexDirection: 'row' },
@@ -67,4 +59,4 @@ const styles = StyleSheet.create({
     }
   });
 
-  export default connect(mapState, mapDispatch)(Slide);
+  export default Slide;

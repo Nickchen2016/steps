@@ -4,7 +4,7 @@ import axios from 'axios';
 const InitialState = {};
 
 //common url
-const url = 'http://192.168.1.8:5000/record'
+const url = 'http://192.168.1.7:5000/record'
 
 //Action Type
 const GET_RECORD = 'GET_RECORD';
