@@ -11,7 +11,7 @@ Just want to make myself without annoying content.
 A mobile app created to help people record their daily steps using MERN stack.
 
 ## Deploy link
-TBC
+https://expo.io/@iconick2020/steps
 
 ## Intro Video
 Coming soon!
